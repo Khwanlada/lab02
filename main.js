@@ -4,7 +4,7 @@ const app = Vue.createApp({
             product: 'Shoes',
             brand: 'SE 331',
             image: './assets/images/socks_green.jpg',
-            inStock: false,
+            inStock: true,
             inventory: 100,
             details: ['50% cotton', '30% wool', '20% polyester'],
             variants: [
@@ -21,5 +21,11 @@ const app = Vue.createApp({
         updateImage(variantImage) {
             this.image = variantImage
         }
+        },
+        computed: {
+            title(){
+                return this.brand + ' ' + this.product
+            }
     }
+    
 })
