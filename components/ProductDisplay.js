@@ -7,7 +7,7 @@ app.component('product-display',{
             <img :src="image">
         </div>
         <div class="product-info">
-            <h1>{{ title }}</h1>
+            <h1>{{ displayOnSale }}</h1>
             <p v-if="inventory > 10">In Stock</p>
             <p v-else-if="inventory <= 10 && inventory > 0">In Stock</p>
             <p v-else>Out of Stock</p>
@@ -18,7 +18,8 @@ app.component('product-display',{
             <button class=" button " :disabled='!inStock':class="{disabledButton: !inStock}" @click="addToCart">Add to Cart</button>
         </div>
     </div>
-</div>`,
+</div>
+    `,
 data() {
     return {
         product: 'Shoes',
