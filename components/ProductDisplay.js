@@ -1,8 +1,15 @@
 app.component('product-display',{
+    
+    props:{
+        premium:{
+            type: Boolean,
+            required: true
+        }
+    },
+    
     template:
     /*html*/
-    `<div class="product-display">
-    <div class="product-container">
+    `<div class="product-container">
         <div class="product-image" :disabled='!inStock':class="{disabledImage: !inStock}">
             <img :src="image">
         </div>
@@ -11,6 +18,7 @@ app.component('product-display',{
             <p v-if="inventory > 10">In Stock</p>
             <p v-else-if="inventory <= 10 && inventory > 0">In Stock</p>
             <p v-else>Out of Stock</p>
+                <p>Shipping: {{shipping}}</p>
             <ul>
                 <li v-for="detail in details">{{ detail }}</li>
             </ul>
@@ -18,8 +26,8 @@ app.component('product-display',{
             <button class=" button " :disabled='!inStock':class="{disabledButton: !inStock}" @click="addToCart">Add to Cart</button>
         </div>
     </div>
-</div>
-    `,
+</div>`
+    ,
 data() {
     return {
         product: 'Shoes',
@@ -33,7 +41,8 @@ data() {
             { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg',quantity:0 }
         ],
         selectedVariant:0,
-        cart: 0
+        cart: 0,
+        premium: true
     }
 },
 methods: {
@@ -56,6 +65,12 @@ methods: {
         },
         inStock(){
             return this.variants[this.selectedVariant].quantity;
+        },
+        shipping(){
+            if(this.premium){
+                return 'Free'
+            }
+            return 30
         },
         displayOnSale(){
             if(this.inStock == true){
