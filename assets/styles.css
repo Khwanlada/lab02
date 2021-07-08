@@ -43,6 +43,11 @@ body {
     cursor: not-allowed;
 }
 
+.disabledImage {
+    filter: grayscale();
+    cursor: not-allowed;
+}
+
 h1 {
     font-size: 50px;
 }
