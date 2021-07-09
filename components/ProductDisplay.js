@@ -28,6 +28,7 @@ app.component('product-display',{
             <button class=" button " :disabled='!inStock':class="{disabledButton: !inStock}" @click="removeCart">Remove from Cart</button>
         </div>
     </div>
+        <review-form></review-form>
 </div>`
     ,
 data() {
