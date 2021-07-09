@@ -49,7 +49,7 @@ data() {
 },
 methods: {
     addToCart() {
-        this.cart += 1
+        this.cart +=1
     },
     updateImage(variantImage) {
         this.image = variantImage
@@ -93,7 +93,10 @@ app.component('product-details',{
     ,
     computed:{
         productDetail(){
-            return this.details
+            return this.detail
+        },
+        addToCart() {
+            this.$emit('add-to-cart')
         }
     }
 })
