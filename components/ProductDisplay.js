@@ -4,7 +4,7 @@ app.component('product-display',{
         premium:{
             type: Boolean,
             required: true
-        }
+        },
     },
     
     template:
@@ -19,6 +19,7 @@ app.component('product-display',{
             <p v-else-if="inventory <= 10 && inventory > 0">In Stock</p>
             <p v-else>Out of Stock</p>
                 <p>Shipping: {{shipping}}</p>
+                <p>productDetail: {{detail}}</p>
             <ul>
                 <li v-for="detail in details">{{ detail }}</li>
             </ul>
@@ -27,6 +28,7 @@ app.component('product-display',{
         </div>
     </div>
 </div>`
+
     ,
 data() {
     return {
@@ -76,6 +78,22 @@ methods: {
             if(this.inStock == true){
                return this.brand + ' ' +this.product+ ' '+ 'is on sale'; 
             }
-        }
+        },
 }
+}),
+app.component('product-details',{
+    props:{
+        detail:{
+            type: String
+        }
+    },
+    template:
+    /*html*/
+    `<p> {{productDetail}} </p>`
+    ,
+    computed:{
+        productDetail(){
+            return this.details
+        }
+    }
 })
