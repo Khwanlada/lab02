@@ -14,9 +14,9 @@
     <div id="app">
         <div class="nav-bar"></div>
 
-        <div class="cart">Cart({{ cart }})</div>
+        <div class="cart">Cart({{ carts }})</div>
 
-        <product-display :premium="premium" @add-to-cart="updateCart"></product-display>
+        <product-display :premium="premium" @add-to-cart="updateCart" @remove-cart="removeCart"></product-display>
         <product-details :productdetail="productdetail"></product-details>
 
 

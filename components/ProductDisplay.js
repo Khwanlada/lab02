@@ -19,16 +19,16 @@ app.component('product-display',{
             <p v-else-if="inventory <= 10 && inventory > 0">In Stock</p>
             <p v-else>Out of Stock</p>
                 <p>Shipping: {{shipping}}</p>
-                <p>productDetail: {{detail}}</p>
+                <p>Product detail: {{detail}}</p>
             <ul>
                 <li v-for="detail in details">{{ detail }}</li>
             </ul>
             <div v-for="(variant,index) in variants" :key="variant.id" @mouseover="updateVariant (index)" class="color-circle" :style="{backgroundColor: variant.color}"></div>
             <button class=" button " :disabled='!inStock':class="{disabledButton: !inStock}" @click="addToCart">Add to Cart</button>
+            <button class=" button " :disabled='!inStock':class="{disabledButton: !inStock}" @click="removeCart">Remove from Cart</button>
         </div>
     </div>
 </div>`
-
     ,
 data() {
     return {
@@ -48,6 +48,9 @@ data() {
     }
 },
 methods: {
+    removeCart(){
+        this.$emit('remove-cart')
+    },
     addToCart() {
         this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
     },

@@ -8,6 +8,16 @@ const app = Vue.createApp({
     methods: {
             updateCart(id){
                 this.cart.push(id);
+            },
+            removeCart(){
+                this.cart.splice(-1)
             }
+            
     } 
+    ,
+    computed:{
+                carts(){
+                    return this.cart.length
+            }
+        }
 })
