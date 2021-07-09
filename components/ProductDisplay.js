@@ -49,7 +49,7 @@ data() {
 },
 methods: {
     addToCart() {
-        this.cart +=1
+        this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
     },
     updateImage(variantImage) {
         this.image = variantImage
@@ -80,23 +80,4 @@ methods: {
             }
         },
 }
-}),
-app.component('product-details',{
-    props:{
-        detail:{
-            type: String
-        }
-    },
-    template:
-    /*html*/
-    `<p> {{productDetail}} </p>`
-    ,
-    computed:{
-        productDetail(){
-            return this.detail
-        },
-        addToCart() {
-            this.$emit('add-to-cart')
-        }
-    }
 })
